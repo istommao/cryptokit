@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% if page_title %}{{ page_title }} - {% endif %}{{ site_name }}</title>
+    <link href="/static/highlight/styles/monokai_sublime.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/main.css" media="screen" title="no title">
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+
+    <script type="text/javascript" src="/static/main.js"></script>
+    <script src="/static/highlight/highlight.min.js"></script>
+    <script type="text/javascript">
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+<body>
+  <div id="pageWrapper">
+    <div class="topNav" id="topNav">
+      <div class="topbarHead">
+          {{ site_name }}
+      </div>
+    </div>
+
+    <div class="container" id="container">
+      <div class="aside" id="sidebar">
+        {% include "menu.html" %}
+      </div>
+      <div class="main">
+        {% block content %}
+          {% include "content.html" %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

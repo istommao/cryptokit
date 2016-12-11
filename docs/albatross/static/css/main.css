@@ -1,0 +1,191 @@
+body, div, span, ul, li {
+    margin: 0 auto;
+    padding: 0;
+}
+
+.topNav {
+    width: 100%;
+    height: 50px;
+    background-color: #0099CC;
+}
+.topNav .topbarHead {
+    float: left;
+    width: 200px;
+    color: white;
+    text-indent: 20px;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+.container {
+    position: absolute;
+    left: 0;
+    top: 48px;
+    right: 0;
+    bottom: 0;
+    height: auto;
+}
+
+.aside {
+    position: relative;
+    width: 200px;
+    color: #B3B3B3;
+    background-color: #293038;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+}
+.aside .menu>ul {
+  margin: 0;
+  padding: 10px 0;
+  list-style: none;
+  list-style-image: none;
+}
+.menu ul li {
+  overflow: hidden;
+}
+.aside .menu .active {
+  background: #FCFCFC;
+  color: #808080;
+}
+.aside .menu>ul li {
+  height: 35px;
+  line-height: 35px;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+.menu li:not(.active) > a:hover {
+  color: white;
+}
+.menu a[class="dropmenu"] {
+  width: 100%;
+  text-indent: 5px;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.menu a[class="dropmenu"]:hover {
+  background-color: #272822;
+  color: white;
+}
+
+.menu {
+    position: relative;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.menu>ul {
+  text-indent: 10px;
+  overflow: hidden;
+}
+.menu>ul>li {
+  text-indent: 5px;
+}
+
+.menu a {
+  display: block;
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+
+.menu ul[class~="hidden"] {
+  display: none;
+}
+
+.main {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 200px;
+  background-color: #EAEDF1;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.mainContent {
+  width: auto;
+  margin: 15px;
+  padding: 0 15px 15px 15px;
+  background-color: white;
+  border: 1px solid #F9FAFC;
+  border-radius: 4px;
+}
+
+.mainContent .reqAddress {
+    border-radius: 4px;
+    width: auto;
+    background: #343131;
+    color: white;
+    padding: 10px 5px;
+    font-size: 18px;
+}
+.mainContent .reqMethod {
+    color: #0099CC;
+}
+
+.mainContent .reqURL{
+    text-indent: 20px;
+    display: inline-block;
+}
+
+.mainContent h2 {
+    position: relative;
+    font-size: 22px;
+    line-height: 30px;
+}
+
+.mainContent h3 {
+    font-size: 18px;
+}
+
+.mainContent table {
+  width: 100%;
+  margin: 20px 0 18px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none;
+}
+
+.mainContent>ul {
+  font-size: 16px;
+  text-indent: 5px;
+  border-left: 4px solid #0099CC;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.mainContent table td, .mainContent table th {
+    padding: 12px 25px;
+    border: 1px solid #e1e3e5;
+}
+.mainContent table th {
+    background-color: #f5f7fa;
+    color: #000;
+    white-space: nowrap;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+pre code {
+  border-radius: 4px;
+  overflow-x: auto;
+}

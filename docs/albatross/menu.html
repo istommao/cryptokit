@@ -1,0 +1,17 @@
+<div class="menu">
+  <ul>
+    {% for nav_item in nav %}
+      {% if nav_item.children %}
+          <a class="dropmenu">{% if nav_item.active %}<i class="fa fa-folder-open" aria-hidden="true"></i>{% else %}<i class="fa fa-folder" aria-hidden="true"></i>{% endif %}&nbsp;&nbsp;{{ nav_item.title }}</a>
+          <ul {% if not nav_item.active %}class="hidden"{% endif %}>
+            {% for nav_item in nav_item.children %}
+                <li{% if nav_item.active %} class="active"{% endif %}>
+                <a href="{{ nav_item.url }}"><i class="fa fa-file-text-o" aria-hidden="true"></i>&nbsp;&nbsp;{{ nav_item.title }}</a></li>
+            {% endfor %}
+          </ul>
+      {% else %}
+      <li><a href="{{ nav_item.url }}"><i class="fa fa-bars" aria-hidden="true"></i>&nbsp;&nbsp;{{ nav_item.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>

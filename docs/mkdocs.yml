@@ -1,0 +1,6 @@
+site_name: cryptokit API
+theme_dir: albatross
+theme: null
+
+pages:
+- Home: index.md
