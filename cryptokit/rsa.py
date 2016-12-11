@@ -101,11 +101,8 @@ class RSACrypto(object):
         return ciphertext
 
     @classmethod
-    def decrypt(cls, ciphertext, message, private_key, algorithm='sha1'):
+    def decrypt(cls, ciphertext, private_key, algorithm='sha1'):
         """Private key descrption."""
-        if not isinstance(message, bytes):
-            message = message.encode()
-
         algorithm = cls.ALGORITHM_DICT.get(algorithm)
 
         plaintext = private_key.decrypt(
@@ -116,4 +113,4 @@ class RSACrypto(object):
                 label=None
             )
         )
-        return plaintext == message
+        return plaintext.decode()
