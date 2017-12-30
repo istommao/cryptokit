@@ -8,9 +8,15 @@ from cryptography.hazmat.backends import default_backend
 class AESCrypto(object):
     """AESCrypto."""
 
-    def __init__(self, cbc_key, cbc_iv):
-        self.cbc_key = cbc_key
-        self.cbc_iv = cbc_iv
+    def __init__(self, aes_key, aes_iv):
+        if not isinstance(aes_key, bytes):
+            aes_key = aes_key.encode()
+
+        if not isinstance(aes_iv, bytes):
+            aes_iv = aes_iv.encode()
+
+        self.aes_key = aes_key
+        self.aes_iv = aes_iv
 
     def encrypt(self, data, mode='cbc'):
         """encrypt."""
@@ -29,8 +35,8 @@ class AESCrypto(object):
         if not isinstance(data, bytes):
             data = data.encode()
 
-        cipher = Cipher(algorithms.AES(self.cbc_key),
-                        modes.CBC(self.cbc_iv),
+        cipher = Cipher(algorithms.AES(self.aes_key),
+                        modes.CBC(self.aes_iv),
                         backend=default_backend())
         encryptor = cipher.encryptor()
 
@@ -43,8 +49,8 @@ class AESCrypto(object):
         if not isinstance(data, bytes):
             data = data.encode()
 
-        cipher = Cipher(algorithms.AES(self.cbc_key),
-                        modes.CBC(self.cbc_iv),
+        cipher = Cipher(algorithms.AES(self.aes_key),
+                        modes.CBC(self.aes_iv),
                         backend=default_backend())
         decryptor = cipher.decryptor()
 
