@@ -6,6 +6,7 @@ python:
   - 3.5
 install:
   - pip install codecov
+  - pip install cryptography
 before_script:
   - pip install pytest-cov
 script:
