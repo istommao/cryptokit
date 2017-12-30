@@ -16,7 +16,7 @@ class RSACryptoTestCase(TestCase):
         self.private_key = private_key
         self.public_key = private_key.public_key()
 
-    def test_success(self):
+    def test_encryption_decryption(self):
         message = 'Hello RSACrypto'
         ciphertext = RSACrypto.encrypt(
             message, self.public_key, algorithm='sha1')
@@ -25,3 +25,13 @@ class RSACryptoTestCase(TestCase):
             ciphertext, self.private_key, algorithm='sha1')
 
         self.assertEqual(plaintext, message)
+
+    def test_signature_verification(self):
+        message = 'Hello RSACrypto'
+        signature = RSACrypto.signing(
+            message, self.private_key, algorithm='sha1')
+
+        success = RSACrypto.verification(
+            message, signature, self.public_key, algorithm='sha1')
+
+        self.assertTrue(success)

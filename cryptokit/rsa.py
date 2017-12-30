@@ -2,6 +2,8 @@
 """rsa crypto."""
 from __future__ import unicode_literals
 
+from cryptography.exceptions import InvalidSignature
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
@@ -74,16 +76,21 @@ class RSACrypto(object):
 
         algorithm = cls.ALGORITHM_DICT.get(algorithm)
 
-        verifier = public_key().verifier(
-            signature,
-            padding.PSS(
-                mgf=padding.MGF1(algorithm),
-                salt_length=padding.PSS.MAX_LENGTH
-            ),
-            algorithm
-        )
-        verifier.update(message)
-        return verifier.verify()
+        try:
+            public_key.verify(
+                signature,
+                message,
+                padding.PSS(
+                    mgf=padding.MGF1(algorithm),
+                    salt_length=padding.PSS.MAX_LENGTH
+                ),
+                algorithm
+            )
+        except InvalidSignature:
+            verifier = False
+        else:
+            verifier = True
+        return verifier
 
     @classmethod
     def encrypt(cls, message, public_key, algorithm='sha1'):
