@@ -1,4 +1,7 @@
+# coding: utf-8
 """rsa crypto."""
+from __future__ import unicode_literals
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import rsa, padding
