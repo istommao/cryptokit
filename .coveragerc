@@ -1,12 +1,13 @@
 [report]
 omit = *env*, *test*, *migrations*, *getpass*, *smtplib*, *xml*, *utf_32_be*,
-    setup.py
+    setup.py, *.pyc, *.html, docs/*, mkdocs/*
 
 exclude_lines =
     pragma: no cover
     def __repr__
     if self.debug:
     if settings.DEBUG
+    docs/*
     raise AssertionError
     raise NotImplementedError
     if 0:
