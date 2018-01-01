@@ -7,7 +7,8 @@
 cryptokit is a cryptography kit base on Cryptography(https://github.com/pyca/cryptography)
 
 # Document
-[cryptokit](https://readthedocs.org/projects/cryptokit/)
+
+You can find more information in the cryptokit [documentation](https://readthedocs.org/projects/cryptokit/).
 
 # Feature Support
 - AES Cryptography
