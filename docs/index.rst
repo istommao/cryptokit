@@ -1,7 +1,3 @@
-..Welcome to cryptokit docs
-   cryptokit is a cryptography kit base on [Cryptography](https://github.com/pyca/cryptography)
-
-
 cryptokit文档
 =================================
 
