@@ -2,6 +2,8 @@
 """rsa crypto."""
 from __future__ import unicode_literals
 
+import warnings
+
 from cryptography.exceptions import InvalidSignature
 
 from cryptography.hazmat.backends import default_backend
@@ -50,7 +52,7 @@ class RSACrypto(object):
         return pem.decode()
 
     @classmethod
-    def signing(cls, message, private_key, algorithm='sha1'):
+    def sign(cls, message, private_key, algorithm='sha1'):
         """signing."""
         if not isinstance(message, bytes):
             message = message.encode()
@@ -61,6 +63,12 @@ class RSACrypto(object):
 
         signer.update(message)
         return signer.finalize()
+
+    @classmethod
+    def signing(cls, message, private_key, algorithm='sha1'):
+        """signing() will deprecated in 0.1.0, use sign()"""
+        warnings.warn('signing() will deprecated in 0.1.0, use sign()')
+        return cls.sign(message, private_key, algorithm=algorithm)
 
     @classmethod
     def _oaep_padding(cls, algorithm):
@@ -80,8 +88,8 @@ class RSACrypto(object):
         return padding_data
 
     @classmethod
-    def verification(cls, message, signature, public_key, algorithm='sha1'):
-        """Verification."""
+    def verify(cls, message, signature, public_key, algorithm='sha1'):
+        """verify."""
         if not isinstance(message, bytes):
             message = message.encode()
 
@@ -95,6 +103,13 @@ class RSACrypto(object):
         else:
             verifier = True
         return verifier
+
+    @classmethod
+    def verification(cls, message, signature, public_key, algorithm='sha1'):
+        """verification() will deprecated in 0.1.0, use verify()"""
+        warnings.warn('verification() will deprecated in 0.1.0, use verify()')
+
+        return cls.verify(message, signature, public_key, algorithm=algorithm)
 
     @classmethod
     def encrypt(cls, message, public_key, algorithm='sha1'):

@@ -7,7 +7,7 @@ INSTALL_REQUIRES = [
     'cryptography>=1.5.2'
 ]
 
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 
 LONG_DESCRIPTION = 'cryptokit is a cryptography kit base on pyca Cryptography.'
 

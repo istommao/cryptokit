@@ -35,3 +35,11 @@ class RSACryptoTestCase(TestCase):
             message, signature, self.public_key, algorithm='sha1')
 
         self.assertTrue(success)
+
+        signature = RSACrypto.sign(
+            message, self.private_key, algorithm='sha1')
+
+        success = RSACrypto.verify(
+            message, signature, self.public_key, algorithm='sha1')
+
+        self.assertTrue(success)

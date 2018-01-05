@@ -1,3 +1,9 @@
+# version 0.0.3
+`2017-1-5`
+
+- Add RSA sign and verify function
+- RSA signing and verification function will deprecated in version 0.1.0
+
 # version 0.0.2
 `2016-12-11`
 
