@@ -66,8 +66,9 @@ class RSACrypto(object):
 
     @classmethod
     def signing(cls, message, private_key, algorithm='sha1'):
-        """signing() will deprecated in 0.1.0, use sign()"""
-        warnings.warn('signing() will deprecated in 0.1.0, use sign()')
+        """signing() will deprecated in 0.1.0, use sign() please"""
+        warnings.warn(
+            'signing() will deprecated in 0.1.0, use sign() please', DeprecationWarning)
         return cls.sign(message, private_key, algorithm=algorithm)
 
     @classmethod
@@ -106,8 +107,9 @@ class RSACrypto(object):
 
     @classmethod
     def verification(cls, message, signature, public_key, algorithm='sha1'):
-        """verification() will deprecated in 0.1.0, use verify()"""
-        warnings.warn('verification() will deprecated in 0.1.0, use verify()')
+        """verification() will deprecated in 0.1.0, use verify() please"""
+        warnings.warn(
+            'verification() will deprecated in 0.1.0, use verify() please', DeprecationWarning)
 
         return cls.verify(message, signature, public_key, algorithm=algorithm)
 
