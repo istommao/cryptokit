@@ -6,6 +6,8 @@ from cryptography.hazmat.primitives import padding
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 
+from .exception import AesException
+
 
 class AESCrypto(object):
     """AESCrypto."""
@@ -82,6 +84,6 @@ class AESCrypto(object):
         try:
             uppadded_data = data + unpadder.finalize()
         except ValueError:
-            raise Exception('无效的加密信息!')
+            raise AesException('无效的加密信息!')
         else:
             return uppadded_data

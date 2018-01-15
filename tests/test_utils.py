@@ -7,7 +7,8 @@ import datetime
 from unittest import TestCase
 
 from cryptokit.rsa import RSACrypto
-from cryptokit.utils import load_pfx, generate_certificate, generate_pfx
+from cryptokit.utils import (load_pfx, generate_certificate, generate_pfx,
+                             get_pubkey_from_pfx)
 
 
 class UtilTestCase(TestCase):
@@ -60,3 +61,16 @@ class UtilTestCase(TestCase):
             cert.serial_number,
             pkcs12.get_certificate().get_serial_number()
         )
+
+    def test_get_pubkey_from_pfx(self):
+        """Test get_pubkey_from_pfx."""
+        cert = generate_certificate(
+            self.not_valid_before, self.not_valid_after, **self.payload)
+
+        pfx_file = generate_pfx(
+            cert, self.payload['company_name'], self.private_key)
+
+        pubkey = get_pubkey_from_pfx(pfx_file, password=None)
+
+        self.assertEqual(cert.public_key().public_numbers(),
+                         pubkey.public_numbers())
