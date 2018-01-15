@@ -1,3 +1,8 @@
+# version 0.0.6
+`2017-1-15`
+
+- Fix ImportError
+
 # version 0.0.4
 `2017-1-15`
 
