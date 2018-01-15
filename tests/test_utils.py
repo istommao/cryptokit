@@ -54,13 +54,11 @@ class UtilTestCase(TestCase):
         cert = generate_certificate(
             self.not_valid_before, self.not_valid_after, **self.payload)
 
-        certificate = crypto.X509().from_cryptography(cert)
-        private_key = crypto.PKey().from_cryptography_key(self.private_key)
         pfx = generate_pfx(
-            certificate, self.payload['company_name'], private_key)
+            cert, self.payload['company_name'], self.private_key)
 
         pkcs12 = load_pfx(pfx)
         self.assertEqual(
-            certificate.get_serial_number(),
+            cert.serial_number,
             pkcs12.get_certificate().get_serial_number()
         )

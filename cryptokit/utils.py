@@ -104,6 +104,12 @@ def generate_pfx(certificate, friendly_name, private_key, passphrase=None,
 
     :param obj certificate: certificate
     """
+    if not isinstance(certificate, crypto.X509):
+        certificate = crypto.X509().from_cryptography(certificate)
+
+    if not isinstance(private_key, crypto.PKey):
+        private_key = crypto.PKey().from_cryptography_key(private_key)
+
     if not isinstance(friendly_name, bytes):
         friendly_name = friendly_name.encode()
 
