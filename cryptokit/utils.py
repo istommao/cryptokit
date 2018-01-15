@@ -19,7 +19,7 @@ def load_pfx(pfx_file, password=None):
         data = pfx_file
 
     if password and not isinstance(password, bytes):
-        password = password.encode()
+        password = password.encode('utf-8')
 
     return crypto.load_pkcs12(data, passphrase=password)
 
@@ -111,7 +111,7 @@ def generate_pfx(certificate, friendly_name, private_key, passphrase=None,
         private_key = crypto.PKey().from_cryptography_key(private_key)
 
     if not isinstance(friendly_name, bytes):
-        friendly_name = friendly_name.encode()
+        friendly_name = friendly_name.encode('utf-8')
 
     pkcs12 = crypto.PKCS12()
     pkcs12.set_certificate(certificate)

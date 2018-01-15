@@ -30,7 +30,7 @@ class UtilTestCase(TestCase):
             'country_name': 'CN',
             'email_address': 'codingcat@gmail.com',
             'org_name': '数字认证中心',
-            'company_name': u'编程猫科技',
+            'company_name': '编程猫科技',
             'state_or_province': '浙江省',
             'locality_name': '杭州市',
             'private_key': self.private_key,
