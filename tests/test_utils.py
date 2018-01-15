@@ -1,4 +1,7 @@
+# coding: utf-8
 """test utils."""
+from __future__ import unicode_literals
+
 import datetime
 
 from unittest import TestCase
