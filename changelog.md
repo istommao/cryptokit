@@ -1,3 +1,8 @@
+# version 0.0.4
+`2017-1-15`
+
+- Add pfx file generate and load function
+
 # version 0.0.3
 `2017-1-5`
 

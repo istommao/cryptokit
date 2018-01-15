@@ -8,6 +8,7 @@ cryptokit文档
 
    cryptokit/aes
    cryptokit/rsa
+   cryptokit/utils
 
 索引和表
 ==================

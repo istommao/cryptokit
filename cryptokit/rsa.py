@@ -59,10 +59,7 @@ class RSACrypto(object):
 
         algorithm = cls.ALGORITHM_DICT.get(algorithm)
 
-        signer = private_key.signer(cls._pss_padding(algorithm), algorithm)
-
-        signer.update(message)
-        return signer.finalize()
+        return private_key.sign(message, cls._pss_padding(algorithm), algorithm)
 
     @classmethod
     def signing(cls, message, private_key, algorithm='sha1'):
@@ -89,21 +86,26 @@ class RSACrypto(object):
         return padding_data
 
     @classmethod
-    def verify(cls, message, signature, public_key, algorithm='sha1'):
+    def verify(cls, message, signature, public_key, padding_mode='pss', algorithm='sha1'):
         """verify."""
         if not isinstance(message, bytes):
             message = message.encode()
 
         algorithm = cls.ALGORITHM_DICT.get(algorithm)
 
+        if padding_mode == 'pkcs1':
+            padding_data = padding.PKCS1v15()
+        else:
+            padding_data = cls._pss_padding(algorithm)
+
         try:
             public_key.verify(signature, message,
-                              cls._pss_padding(algorithm), algorithm)
+                              padding_data, algorithm)
         except InvalidSignature:
-            verifier = False
+            padd_verify = False
         else:
-            verifier = True
-        return verifier
+            padd_verify = True
+        return padd_verify
 
     @classmethod
     def verification(cls, message, signature, public_key, algorithm='sha1'):
