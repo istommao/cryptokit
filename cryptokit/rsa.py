@@ -33,6 +33,18 @@ class RSACrypto(object):
         return private_key
 
     @staticmethod
+    def load_private_key_pem(pem_data, password=None):
+        """Load private key pem."""
+        backend = default_backend()
+        return serialization.load_pem_private_key(pem_data.encode(), password, backend)
+
+    @staticmethod
+    def load_public_key_pem(pem_data):
+        """Load public key pem."""
+        backend = default_backend()
+        return serialization.load_pem_public_key(pem_data.encode(), backend)
+
+    @staticmethod
     def dump_private_key_pem(private_key):
         """Dump private key pem."""
         pem = private_key.private_bytes(

@@ -26,49 +26,74 @@ class AESCrypto(object):
         """encrypt."""
         func_name = '{}_encrypt'.format(mode)
         func = getattr(self, func_name)
+        if not isinstance(data, bytes):
+            data = data.encode()
+
         return func(data)
 
     def decrypt(self, data, mode='cbc'):
         """decrypt."""
         func_name = '{}_decrypt'.format(mode)
         func = getattr(self, func_name)
+
+        if not isinstance(data, bytes):
+            data = data.encode()
+
         return func(data)
+
+    # def cfb_encrypt(self, data):
+    #     """CFB encrypt."""
+    #     cipher = Cipher(algorithms.AES(self.aes_key),
+    #                     modes.CFB(self.aes_iv),
+    #                     backend=default_backend())
+
+    #     return cipher.encryptor().update(data)
+
+    # def cfb_decrypt(self, data):
+    #     """CFB decrypt."""
+    #     cipher = Cipher(algorithms.AES(self.aes_key),
+    #                     modes.CFB(self.aes_iv),
+    #                     backend=default_backend())
+
+    #     return cipher.decryptor().update(data)
+
+    def ctr_encrypt(self, data):
+        """ctr_encrypt."""
+        cipher = Cipher(algorithms.AES(self.aes_key),
+                        modes.CTR(self.aes_iv),
+                        backend=default_backend())
+
+        return cipher.encryptor().update(self.pkcs7_padding(data))
+
+    def ctr_decrypt(self, data):
+        """ctr_decrypt."""
+        cipher = Cipher(algorithms.AES(self.aes_key),
+                        modes.CTR(self.aes_iv),
+                        backend=default_backend())
+
+        uppaded_data = self.pkcs7_unpadding(cipher.decryptor().update(data))
+        return uppaded_data.decode()
 
     def cbc_encrypt(self, data):
         """cbc_encrypt."""
-        if not isinstance(data, bytes):
-            data = data.encode()
-
         cipher = Cipher(algorithms.AES(self.aes_key),
                         modes.CBC(self.aes_iv),
                         backend=default_backend())
-        encryptor = cipher.encryptor()
 
-        padded_data = encryptor.update(self.pkcs7_padding(data))
-
-        return padded_data
+        return cipher.encryptor().update(self.pkcs7_padding(data))
 
     def cbc_decrypt(self, data):
         """cbc_decrypt."""
-        if not isinstance(data, bytes):
-            data = data.encode()
-
         cipher = Cipher(algorithms.AES(self.aes_key),
                         modes.CBC(self.aes_iv),
                         backend=default_backend())
-        decryptor = cipher.decryptor()
 
-        uppaded_data = self.pkcs7_unpadding(decryptor.update(data))
-
-        uppaded_data = uppaded_data.decode()
-        return uppaded_data
+        uppaded_data = self.pkcs7_unpadding(cipher.decryptor().update(data))
+        return uppaded_data.decode()
 
     @staticmethod
     def pkcs7_padding(data):
         """pkcs7_padding."""
-        if not isinstance(data, bytes):
-            data = data.encode()
-
         padder = padding.PKCS7(algorithms.AES.block_size).padder()
 
         padded_data = padder.update(data) + padder.finalize()

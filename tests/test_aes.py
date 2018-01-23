@@ -28,3 +28,12 @@ class AESCryptoTestCase(TestCase):
 
         with self.assertRaises(AesException):
             crypto.decrypt('234234'.encode())
+
+    def test_aes_ctr(self):
+        """Test aes ctr success."""
+        message = "hello cryptokit"
+        crypto = AESCrypto(
+            'WDMG1e38igW53YuxkE0SsKUDeLbULAtL', 'm2VYHdx41zRgvg6f')
+        data = crypto.encrypt(message, mode='ctr')
+
+        self.assertEqual(crypto.decrypt(data, mode='ctr'), message)
