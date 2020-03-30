@@ -10,7 +10,7 @@ from cryptokit.exception import AesException
 
 
 class AESCryptoTestCase(TestCase):
-    """AESCrypto useage test."""
+    """AESCrypto usage test."""
 
     def test_success(self):
         """Test success."""

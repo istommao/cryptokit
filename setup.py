@@ -4,11 +4,11 @@
 from setuptools import setup, find_packages
 
 INSTALL_REQUIRES = [
-    'pyOpenSSL==17.5.0',
-    'cryptography>=1.5.2'
+    'pyOpenSSL>=19.1.0',
+    'cryptography>=2.8'
 ]
 
-VERSION = '0.0.7'
+VERSION = '0.0.8'
 
 LONG_DESCRIPTION = 'cryptokit is a cryptography kit base on pyca Cryptography.'
 

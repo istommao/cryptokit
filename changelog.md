@@ -1,3 +1,9 @@
+# version 0.0.8
+`2020-03-30`
+
+- Add Creating a Certificate Signing Request (CSR)
+
+
 # version 0.0.7
 `2017-1-23`
 

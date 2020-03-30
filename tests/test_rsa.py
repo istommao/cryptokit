@@ -6,7 +6,7 @@ from cryptokit.rsa import RSACrypto
 
 
 class RSACryptoTestCase(TestCase):
-    """RSACrypto useage test."""
+    """RSACrypto usage test."""
 
     def setUp(self):
         private_key = RSACrypto.generate_private_key(2048)

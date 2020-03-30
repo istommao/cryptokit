@@ -12,7 +12,7 @@ from cryptokit.utils import (load_pfx, generate_certificate, generate_pfx,
 
 
 class UtilTestCase(TestCase):
-    """RSACrypto useage test."""
+    """RSACrypto usage test."""
 
     def setUp(self):
         private_key = RSACrypto.generate_private_key(2048)

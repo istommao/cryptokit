@@ -23,12 +23,12 @@ class RSACrypto(object):
     }
 
     @staticmethod
-    def generate_private_key(key_size):
+    def generate_private_key(key_size=2048, public_exponent=65537, backend=default_backend()):
         """Generate rsa private key."""
         private_key = rsa.generate_private_key(
-            public_exponent=65537,
+            public_exponent=public_exponent,
             key_size=key_size,
-            backend=default_backend()
+            backend=backend
         )
         return private_key
 

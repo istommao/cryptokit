@@ -60,6 +60,28 @@ True
 >>> pfx_data = generate_pfx(cert, friendly_name, private_key)
 ```
 
+## Create csr
+
+```python
+from cryptokit import generate_csr
+from cryptokit.rsa import RSACrypto
+
+private_key = RSACrypto.generate_private_key(2048)
+payload = {
+    'country_name': 'US',
+    'state_or_province': 'California',
+    'locality_name': 'San Francisco',
+    'org_name': 'My Company',
+    'common_name': 'mysite.com',
+    'dns_list': ['mysite.com', 'www.mysite.com', 'subdomain.mysite.com']
+}
+
+csr_data = generate_csr(private_key, encoding='pem', algorithm='sha256', **payload)
+
+with open('/path/to/csr.pem', 'wb') as f:
+    f.write(csr_data)
+```
+
 # ChangeLog
 
 [changelog](changelog.md)
