@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from cryptography.exceptions import InvalidSignature
 
 from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import raw_ed25519
+from cryptography.hazmat.primitives.asymmetric import ed25519 as raw_ed25519
 
 
 def generate_ed25519_key_pair():
