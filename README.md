@@ -11,8 +11,10 @@ cryptokit is a cryptography kit base on Cryptography(https://github.com/pyca/cry
 You can find more information in the cryptokit [documentation](http://cryptokit.readthedocs.io/zh/latest/).
 
 # Feature Support
+
 - AES Cryptography
 - RSA Cryptography
+- ED25519
 
 # Installation
 
@@ -80,6 +82,26 @@ csr_data = generate_csr(private_key, encoding='pem', algorithm='sha256', **paylo
 
 with open('/path/to/csr.pem', 'wb') as f:
     f.write(csr_data)
+```
+
+## ED25519
+
+*Generate key pair*
+
+```python
+from cryptokit import ed25519
+
+# raw Cryptography object
+private_key_obj, public_key_obj = ed25519.generate_ed25519_key_pair()
+
+# hex
+private_key_hex, public_key_hex = ed25519.generate_ed25519_key_pair("hex")
+
+# base64 encode
+private_key_b64, public_key_b64 = ed25519.generate_ed25519_key_pair("base64")
+
+# bytes
+private_key_bytes, public_key_bytes = ed25519.generate_ed25519_key_pair("bytes")
 ```
 
 # ChangeLog
