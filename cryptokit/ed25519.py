@@ -10,6 +10,7 @@ from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import ed25519 as raw_ed25519
 
 from .exception import ED25519Exception
+from . import x25519
 
 
 def generate_ed25519_key_pair(format_type=None):
@@ -86,3 +87,17 @@ def ed25519_public_key_format(pub_key):
     )
 
     return public_bytes.hex()
+
+
+def get_share_secret_from_hex(private_key_hex: str, target_public_key_hex: str, out_format="hex"):
+    x25519_prviate_key = x25519.get_prviate_key_from_ed25519_hex(private_key_hex)
+    x25519_public_key = x25519.get_public_key_from_ed25519_hex(target_public_key_hex)
+
+    bytes_secret = x25519_prviate_key.exchange(x25519_public_key)
+
+    if out_format == "hex":
+        return bytes_secret.hex()
+    elif bytes_secret == "base64":
+        return base64.b64encode(bytes_secret).decode('utf-8')
+    else:
+        return bytes_secret

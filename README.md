@@ -15,6 +15,7 @@ You can find more information in the cryptokit [documentation](http://cryptokit.
 - AES Cryptography
 - RSA Cryptography
 - ED25519
+- x25519 key exchange
 
 # Installation
 
@@ -103,6 +104,21 @@ private_key_b64, public_key_b64 = ed25519.generate_ed25519_key_pair("base64")
 # bytes
 private_key_bytes, public_key_bytes = ed25519.generate_ed25519_key_pair("bytes")
 ```
+
+
+## ED25519 key exchange
+
+```python
+from cryptokit import ed25519
+
+private_key_hex = "private_key_hex"
+
+target_public_key_hex = "target_public_key_hex"
+
+
+share_secret_hex = ed25519.get_share_secret_from_hex(private_key_hex, target_public_key_hex)
+```
+
 
 # ChangeLog
 

@@ -6,6 +6,7 @@ from .utils import (load_pfx, generate_pfx, generate_certificate,
 from .csr import generate_csr, generate_self_signed_certificate
 
 from . import ed25519
+from . import x25519
 
 
 __all__ = [
@@ -17,5 +18,6 @@ __all__ = [
     'get_pubkey_from_pfx',
     'generate_csr',
     'generate_self_signed_certificate',
-    'ed25519'
+    'ed25519',
+    'x25519'
 ]
