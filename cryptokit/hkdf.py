@@ -11,7 +11,7 @@ sha_map = {
 }
 
 
-def get_hkdf_device_key(input_key, salt="", info="", length=32, algorithm="sha256", out_format="base64"):
+def get_hkdf_derive_key(input_key, salt="", info="", length=32, algorithm="sha256", out_format="base64"):
     if not isinstance(input_key, bytes):
         raise ValueError("Invalid input key type")
 
