@@ -16,6 +16,7 @@ You can find more information in the cryptokit [documentation](http://cryptokit.
 - RSA Cryptography
 - ED25519
 - x25519 key exchange
+- HKDF
 
 # Installation
 
@@ -119,6 +120,13 @@ target_public_key_hex = "target_public_key_hex"
 share_secret_hex = ed25519.get_share_secret_from_hex(private_key_hex, target_public_key_hex)
 ```
 
+## HKDF
+
+```python
+from cryptokit import hkdf
+
+device_key = hkdf.get_hkdf_device_key(bytes.fromhex("hex format string"))
+```
 
 # ChangeLog
 

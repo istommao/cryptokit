@@ -1,6 +1,13 @@
 # Changelog
 
 
+## version 0.1.3
+
+`2022-10-25`
+
+- Add hkdf
+
+
 ## version 0.1.2
 
 `2022-10-24`
